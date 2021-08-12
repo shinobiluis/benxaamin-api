@@ -18,7 +18,7 @@ class CreateEmployeesTable extends Migration
             $table->string('nombre');
             $table->string('email')->unique();
             $table->string('puesto');
-            $table->string('fecha_nacimiento');
+            $table->date('fecha_nacimiento');
             $table->string('domicilio');
             $table->timestamps();
         });
