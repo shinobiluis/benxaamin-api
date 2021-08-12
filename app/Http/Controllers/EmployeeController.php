@@ -13,11 +13,27 @@ use App\Models\{
 // importamos la validacion del empleado
 use App\Http\Requests\EmployeesRequest;
 
+// importamos un Trait para las respuesta del api
+// Este trait nos ayuda a usar siempre un tipo de respuesta
+use App\Traits\ApiResponseTrait;
+
 class EmployeeController extends Controller
 {
-    public function insert( EmployeesRequest $request ){
+    use ApiResponseTrait;
+
+    public function insert( 
+        EmployeesModel $employee, 
+        EmployeesSkillsModel $skills, 
+        EmployeesRequest $request 
+    ){
+        // validamos el $request
         $validated = $request->validated();
-        return $request->all();
+        // Insertamos desde el modelo EmployeesModel
+        $insertEmployee = $employee->insertEnployee( $request );
+        // insetamos las skills desde el modelo de EmployeesSkillsModel
+        $insertSkills = $skills->insertSkills( $insertEmployee->id, $request->skill );
+        // retornamos la respuesta
+        return $this->successRessponse( $request->all(), 200 );
     }
 
 }

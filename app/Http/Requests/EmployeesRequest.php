@@ -54,7 +54,9 @@ class EmployeesRequest extends FormRequest
             // validamos array
             'skill.array' => 'El :attribute debe ser un arreglo de skills',
             // validamos fecha
-            'fecha_nacimiento.date' => 'El :attribute debe ser una fecha con formato YYYY/MM/DD'
+            'fecha_nacimiento.date' => 'El :attribute debe ser una fecha con formato YYYY/MM/DD',
+            'email.unique' => 'Ya existe un registro con ese :attribute'
+
         ];
     }
 

@@ -18,4 +18,9 @@ class EmployeesModel extends Model
         'fecha_nacimiento',
         'domicilio'
     ];
+    // Metodo para insertar empleados
+    public function insertEnployee( $request ){
+        return $this->create( $request->except('skill') );
+    }
+
 }
