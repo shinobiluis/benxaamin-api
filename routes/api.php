@@ -23,3 +23,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // Rutas para api de empleado
 Route::post('insert/employee', [ EmployeeController::class, 'insert' ]);
+Route::get('consult/employees', [ EmployeeController::class, 'consultEmployees']);
+Route::get('consult/employee/{employee_id}', [ EmployeeController::class, 'consultEmployee'] );

@@ -8,10 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 trait ApiResponseTrait{
 
     public function successRessponse( $data, $code ){
-        return response()->json([
-            'data' => $data,
-            'status' => 'true'
-        ], $code);
+        return response()->json( $data, $code );
     }
 
     public function errorResponse(){

@@ -18,9 +18,20 @@ class EmployeesModel extends Model
         'fecha_nacimiento',
         'domicilio'
     ];
+    // relaciones con skills
+    public function skills(){
+        return $this->hasMany(EmployeesSkillsModel::class, 'employee_id', 'id');
+    }
+
     // Metodo para insertar empleados
     public function insertEnployee( $request ){
         return $this->create( $request->except('skill') );
+    }
+
+    public function consultEmployees(){
+        return $this->with([
+            'skills'
+        ])->get();
     }
 
 }
