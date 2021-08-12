@@ -43,4 +43,10 @@ class EmployeeController extends Controller
         return $this->showAll( $employees );
     }
 
+    // metodo para consultar a un empleado por el id
+    public function consultEmployee( EmployeesModel $employee, $employee_id ){
+        $employee = $employee->consultEmployee( $employee_id );
+        return $this->showOne( $employee );
+    }
+
 }

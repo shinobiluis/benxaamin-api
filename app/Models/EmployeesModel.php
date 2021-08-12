@@ -27,11 +27,21 @@ class EmployeesModel extends Model
     public function insertEnployee( $request ){
         return $this->create( $request->except('skill') );
     }
-
+    
+    // metodo para todos los empleados
     public function consultEmployees(){
         return $this->with([
             'skills'
         ])->get();
+    }
+
+    // metodo para consultar un empleado por medio del id
+    public function consultEmployee( $employee_id ){
+        return $this->with([
+            'skills'
+        ])->where([
+            [ 'id', $employee_id ]
+        ])->first();
     }
 
 }
