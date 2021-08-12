@@ -33,19 +33,23 @@ class EmployeeController extends Controller
         $insertEmployee = $employee->insertEnployee( $request );
         // insetamos las skills desde el modelo de EmployeesSkillsModel
         $insertSkills = $skills->insertSkills( $insertEmployee->id, $request->skill );
-        // retornamos la respuesta
-        return $this->successRessponse( $request->all(), 200 );
+        // retornamos la el registro completo del empleado registrado
+        return $this->successRessponse( $employee->consultEmployee( $insertEmployee->id ), 200 );
     }
 
     // metodo para consultar todos los empleados
     public function consultEmployees( EmployeesModel $employees ){
+        // consultamos a todos los empleados desde el modelo
         $employees = $employees->consultEmployees();
+        // retornamos la respuesta
         return $this->showAll( $employees );
     }
 
     // metodo para consultar a un empleado por el id
     public function consultEmployee( EmployeesModel $employee, $employee_id ){
+        // consultamos a un empleado especifico por su id
         $employee = $employee->consultEmployee( $employee_id );
+        // retornamos la respeusta
         return $this->showOne( $employee );
     }
 
