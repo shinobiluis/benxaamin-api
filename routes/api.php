@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+// Importamos el controllador de empleado
+use App\Http\Controllers\EmployeeController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+// Rutas para api de empleado
+Route::post('insert/employee', [ EmployeeController::class, 'insert' ]);
